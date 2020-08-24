@@ -1,0 +1,11 @@
+{
+    "typeName": "JB::VPC::CidrCalc",
+    "language": "python37",
+    "runtime": "python3.7",
+    "entrypoint": "jb_vpc_cidrcalc.handlers.resource",
+    "testEntrypoint": "jb_vpc_cidrcalc.handlers.test_entrypoint",
+    "settings": {
+        "use_docker": true,
+        "protocolVersion": "2.0.0"
+    }
+}

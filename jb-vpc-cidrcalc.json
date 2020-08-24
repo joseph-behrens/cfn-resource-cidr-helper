@@ -1,0 +1,63 @@
+{
+    "typeName": "JB::VPC::CidrCalc",
+    "description": "A resource to help with creating CIDR blocks for subnets",
+    "sourceUrl": "https://github.com/joseph-behrens/cfn-resource-cidr-helper",
+    "properties": {
+        "UID": {
+            "description": "Unique ID of the resource",
+            "type": "string"
+        },
+        "CidrToSplit": {
+            "description": "The CIDR block to split into subnets",
+            "type": "string"
+        },
+        "HostCounts": {
+            "description": "List of the number of hosts needed in each subnet",
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "PrefixForEvenSplit": {
+            "description": "A prefix higher than the given CIDR to do an even split against",
+            "type": "integer"
+        },
+        "CIDRs": {
+            "description": "The generated list of CIDR blocks",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "readOnlyProperties": [
+        "/properties/UID",
+        "/properties/CIDRs"
+    ],
+    "primaryIdentifier": [
+        "/properties/UID"
+    ],
+    "handlers": {
+        "create": {
+            "permissions": [
+                "ssm:PutParameter",
+                "ssm:GetParameter"
+            ]
+        },
+        "read": {
+            "permissions": [
+                "ssm:GetParameter"
+            ]
+        },
+        "update": {
+            "permissions": [
+                "ssm:PutParameter",
+                "ssm:GetParameter"
+            ]
+        },
+        "delete": {
+            "permissions": [
+                "ssm:DeleteParameter",
+                "ssm:GetParameter"
+            ]
+        }
+    }
+}
